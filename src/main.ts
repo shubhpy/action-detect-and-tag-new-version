@@ -24,10 +24,10 @@ async function run(): Promise<void> {
 
   if (currentContent !== previousContent && getInput('create-tag') !== 'false') {
     let tagTemplate = getInput('tag-template');
-    let tag = tagTemplate.replace(DATETIME_EPOCH_PLACEHOLDER, Date.now());
+    let tag = tagTemplate.replace(DATETIME_EPOCH_PLACEHOLDER, Date.now().toString());
 
     let annotationTemplate = getInput('tag-annotation-template') || 'Released version {VERSION}';
-    let annotation = annotationTemplate.replace(DATETIME_EPOCH_PLACEHOLDER, Date.now());
+    let annotation = annotationTemplate.replace(DATETIME_EPOCH_PLACEHOLDER, Date.now().toString());
 
     if (await refExists(tag)) {
       info(`Tag ${tag} already exists`);
